@@ -52,4 +52,6 @@ Next we need to edit inbound rule in EC2:
 
 EC2-> instances-> select instance -> security --> security groups --> edit inbound rules --> add rule --> port is 8501 adn select local as 0.0.0.0/0 --> save rules
 
-Now again try to push code from local to git (git add . ,,, git push -u origin main)
+Now again try to push code from local to git (git add . ,,, git push -u origin main). As we have added all secrets in github, now if we go into actions->workflows, it will be running all the steps
+completely
+
