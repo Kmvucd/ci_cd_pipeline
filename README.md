@@ -2,6 +2,7 @@
 
 Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/view?usp=sharing
 
+This is the clone of dlproject1, where it folks that repository just to explain the way of doing CI/CD pipelines from source code to github using github actions and then to docker and then to AWC EC2, once it is done, I can use local host from EC2 to run my application.
 
 ## Workflows
 
@@ -91,4 +92,10 @@ We can activate this by, Go to EC2 instance and then click on connect. Commands 
 
 Now Github is connected and now if I go back to check runner, it will changed to Active from offline.
 
-But if deployment is failed, again do re run failed jobs.
+But if deployment is failed, again do re run failed jobs or go to EC2 instance and run ./run.sh
+
+Once everything is completed successfully, go to EC2 instance and copy public ipv4 address and paste it as url with :port ie.,(13.14.165.10:8501). Then the final application of streamlit will be displayed.
+
+## Conclusion
+
+In this project, I have implemented CI/CD pipeline end to end, but unittest or pytest is missing in this file.

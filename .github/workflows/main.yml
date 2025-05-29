@@ -64,7 +64,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
 
-
   Continuous-Deployment:
     needs: push_to_registry
     runs-on: self-hosted
@@ -97,5 +96,5 @@ jobs:
       
 
 
-         
+
     
