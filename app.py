@@ -6,7 +6,7 @@ from PIL import Image
 from pathlib import Path
 
 
-# this is for saving images and prediction
+# this is for saving images 
 def save_image(uploaded_file):
     if uploaded_file is not None:
         save_path = os.path.join("images", "input.jpeg")
