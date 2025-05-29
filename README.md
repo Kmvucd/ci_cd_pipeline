@@ -14,12 +14,35 @@ Data link: https://drive.google.com/file/d/1pfIAlurfeqFTbirUZ5v_vapIoGPgRiXY/vie
 
 
 # pipeline
+CI - Continuous Integration
+CD1 - Continuous Delivery
+CD2 - Continuous Deployment
+
+CI, CD1 are performing through github actions server.
+CD2 is perfoming through own machine (self host server) in AWS EC2. Self hoster I need to configure.
+
+## How workflow is happening?
+CI Phase (CI+CD1):
+    Once developer pushes the code to github, it triggers github actions (CI/CD pipelines) via main.yaml file. Github action runs 
+        1. Docker build: Packages code and dependencies into docker image.
+        2. Docker push: Pushes image to AWS ECR.
+CD Phase (CD2):
+    On a target machine like AWS EC2, docker pulls image from ECR. Docker runs the containers
 
 ## steps to follow
 
+For the workflow and integration, Once main.yaml file is build, we need to create secrets and launch instance in EC2.
 
-In EC2, write "sudo apt-get update -y" -- updating
+Go to AWS EC2 -> Launch Instance -> Giive Name(CNNApp) -> Select ubuntu -> Select Payless -> Select instance type as t2 medium (payless) -> Create new key pair -> Name(CNNApplication) -> RSA-> .pem -> Create -> Allow HTTPS, Allow HTTP both along with Allow SSH (0.0.0.0/0)-> Configure storage as 16(upto 30 I can select anything)-> Launch(Successfully launched)
 
+Once launched, go into launched instance -> Select my instance -> Connect to instance -> Connect(Now I can access the EC2 terminal).
+
+Now go into IAM-> Users-> Create access keys -> Give admin access ->Download access keys (If not downloaded already).
+
+Now we need to add secrets in github which are in main.yaml:
+Go into github -> settings -> secrets -> Actions -> Repository secrets -> Give name and secret -> Add secret. Similarly Add Secret for all (DOCKER_USERNAME, DOCKER_PASSWORD, IMAGE_NAME, REGISTRY, AWS_ACCESS_KEY, AWS_SECRET_ACCESS_KEY, AWS_REGION).
+
+In EC2, for updating write "sudo apt-get update -y" 
 then write "sudo apt-get upgrade -y"
 
 install dockers --> curl -fsSL https://get.docker.com -o get-docker.sh
@@ -41,6 +64,7 @@ To check any containers running or not --> docker ps -a
 By this we have configured docker on the linux
 
 Now we need to push image to ECR using docker and from EC2 write a code so that we can pull image from ECR
+
 Go to github-> settings --> Actions --> Runners --> Go down to download and execute each commands in EC2
 Go down to configure and execute each commands in EC2
 
