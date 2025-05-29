@@ -60,7 +60,8 @@ Create group --> newgrp docker
 Now check for images --> docker images
 
 To check any containers running or not --> docker ps -a
-
+If we want to stop any container, "docker stop 'container id from above query'"
+To remove container docker rm "'container id'"
 By this we have configured docker on the linux
 
 Now we need to push image to ECR using docker and from EC2 write a code so that we can pull image from ECR
@@ -89,3 +90,5 @@ We can activate this by, Go to EC2 instance and then click on connect. Commands 
 4. ./run.sh
 
 Now Github is connected and now if I go back to check runner, it will changed to Active from offline.
+
+But if deployment is failed, again do re run failed jobs.
